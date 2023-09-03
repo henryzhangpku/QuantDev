@@ -1,2 +1,2 @@
 # QuantDev
-Example repo for QuantDev youtube channel
+Full working code repo from QuantDev youtube channel (https://www.youtube.com/@QuantDevXYZ)
