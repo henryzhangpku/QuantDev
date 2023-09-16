@@ -14,47 +14,15 @@ from sysdata.sim.csv_futures_sim_data import csvFuturesSimData
 """"
 Let's get some data
 
-We can get data from various places; however for now we're going to use
-prepackaged 'legacy' data stored in csv files
 """
 
-data = csvFuturesSimData()
-
-print(data)
-"""
-We get stuff out of data with methods
-"""
-print(data.get_instrument_list())
-print(data.get_raw_price("EDOLLAR").tail(5))
-"""
-data can also behave in a dict like manner (though it's not a dict)
-"""
-
-print(data["VIX"])
-print(data.keys())
+from syscore.pandas.pdutils import pd_readcsv
+inpath = './data/in/'
+instrument_code = 'BTC-USDT'
+data = pd_readcsv(inpath +"/coinbase/" + instrument_code + '_raw.csv', date_index_name='Date')
+price = data['Close']
 
 """
-Not all the instruments are easily identifiable
-"""
-
-print(data.get_instrument_object_with_meta_data("MUMMY"))
-
-
-"""
-
-... however this will only access prices
-(note these prices have already been backadjusted for rolls)
-
-We have extra futures data here
-
-"""
-
-print(data.get_instrument_raw_carry_data("EDOLLAR").tail(6))
-"""
-Technical note: csvFuturesSimData inherits from FuturesData which itself inherits
-from simData
-The chain is 'data specific' <- 'asset class specific' <- 'generic'
-
 Let's create a simple trading rule
 
 No capping or scaling
@@ -95,8 +63,7 @@ Try it out
 
 (this isn't properly scaled at this stage of course)
 """
-instrument_code = "VIX"
-price = data.daily_prices(instrument_code)
+
 ewmac = calc_ewmac_forecast(price, 32, 128)
 ewmac2 = calc_ewmac_forecast(price, 16, 64)
 
