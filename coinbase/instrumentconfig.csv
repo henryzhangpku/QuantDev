@@ -39,3 +39,6 @@ NEST-USDT,1,Crypto,USDT,FALSE,NEST-USDT,Coinbase,Crypto,
 SYLO-USDT,1,Crypto,USDT,FALSE,SYLO-USDT,Coinbase,Crypto,
 STG-USDT,1,Crypto,USDT,FALSE,STG-USDT,Coinbase,Crypto,
 BOBA-USDT,1,Crypto,USDT,FALSE,BOBA-USDT,Coinbase,Crypto,
+BTC-USDT,1,Crypto,USDT,FALSE,BOBA-USDT,Coinbase,Crypto,
+ETH-USDT,1,Crypto,USDT,FALSE,BOBA-USDT,Coinbase,Crypto,
+
