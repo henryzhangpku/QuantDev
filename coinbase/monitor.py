@@ -8,7 +8,8 @@ pd.set_option('display.max_rows', None)
 
 def show_holding(smart_sorting=True):
     instrument_list = []
-    for ac in auth_client.get_accounts():
+    acs = auth_client.get_accounts()
+    for ac in acs:
         if ac['available'] != '0':
             cbid = ac['currency']
             instrument_list.append(cbid)
@@ -16,7 +17,7 @@ def show_holding(smart_sorting=True):
         0, index=instrument_list, columns=['Return', 'MarketValue', 'Price', 'Holding', 'Benchmark']) 
 
     print("#####################################################################")
-    acs = auth_client.get_accounts()
+
     for ac in acs:
         if ac['available'] != '0':
             cbid = ac['currency']
