@@ -3,12 +3,11 @@ from coinbase.trade import tradeCB
 from global_config import *
 if __name__ == '__main__':
     signalname = 'trend'
-    pm = pd.read_csv(outpath + '/coinbase/' + signalname + '_signals.csv')
-    pm = pm[pm[pm.columns[1]]>0] # enter long only signals , or exit
     USD = 10
+    pm = pd.read_csv(outpath + '/coinbase/' + signalname + '_signals.csv')
+    print(pm)
+    pm = pm[pm[pm.columns[1]]>0] # enter long only signals , or exit
     signals = set(pm['Asset'].apply(lambda x: x.split('-')[0]))
-
-    print(signals)
     positions = show_holding()
 
     assets_to_exit = set(positions.index.values).difference(
